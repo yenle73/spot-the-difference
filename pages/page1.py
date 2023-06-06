@@ -20,11 +20,9 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Originals</h3>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
     with col1:
-        st.markdown('<p style="text-align: center;">Image 1</p>',unsafe_allow_html=True)
         st.image(image1)
 
     with col2:
-        st.markdown('<p style="text-align: center;">Image 2</p>',unsafe_allow_html=True)
         st.image(image2)
 
     img_array1 = np.array(image1)
@@ -75,10 +73,8 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
     st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
     with col1:
-        st.markdown('<p style="text-align: center;">Image 1</p>',unsafe_allow_html=True)
         st.image(img_array1)
     with col2:
-        st.markdown('<p style="text-align: center;">Image 2</p>',unsafe_allow_html=True)
         st.image(img_array2)
 
 
