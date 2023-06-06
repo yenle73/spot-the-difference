@@ -35,7 +35,7 @@ def draw_diff(img1, img2):
     return (diff * 255).astype("uint8")
 
 
-st.markdown("<h2 style='text-align: center; color: #10316B;'>SSIM Comparison</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; color: #10316B;'>Structural Similarity Index Comparison</h2>", unsafe_allow_html=True)
 
 #Add file uploader to allow users to upload photos
 uploaded_file_1 = st.file_uploader("", type=['jpg','png','jpeg'], key='file1')
