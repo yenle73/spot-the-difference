@@ -10,9 +10,6 @@ def Sobel_compare(image1, image2):
   gray1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
   gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
 
-  image1 = cv2.resize(image1, dsize=None, fx=0.3, fy=0.3)
-  image2 = cv2.resize(image2, dsize=None, fx=0.3, fy=0.3)
-
   st.markdown("<h3 style='text-align: center; color: #10316B;'>Resize and Gray Scale</h3>", unsafe_allow_html=True)
   col1, col2 = st.columns( [0.5, 0.5])
   with col1:
@@ -85,7 +82,7 @@ uploaded_file_1 = st.file_uploader("", type=['jpg','png','jpeg'], key='file1')
 
 uploaded_file_2 = st.file_uploader("", type=['jpg','png','jpeg'], key='file2')
 
-#Add 'before' and 'after' columns
+#Add originals
 if uploaded_file_1 is not None and uploaded_file_2 is not None:
     image1 = Image.open(uploaded_file_1)
     image2 = Image.open(uploaded_file_2)
