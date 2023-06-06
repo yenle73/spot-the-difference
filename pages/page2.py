@@ -51,7 +51,7 @@ def Sobel_compare(image1, image2):
   st.image(diff)
 
   threshold = 50
-  diff = cv2.threshold(diff, threshold, 255, cv2.THRESH_BINARY)[1]
+  diff = cv2.threshold(diff, 200, 255, cv2.THRESH_BINARY)[1]
 
   # Dilation
   kernel = np.ones((5,5), np.uint8)
