@@ -50,17 +50,8 @@ def Sobel_compare(image1, image2):
   st.markdown("<h3 style='text-align: center; color: #10316B;'>Absolute differences between the edges</h3>", unsafe_allow_html=True)
   st.image(diff)
 
-  threshold = 50
-  diff = cv2.threshold(diff, 200, 255, cv2.THRESH_BINARY)[1]
-
-  # Dilation
-  kernel = np.ones((5,5), np.uint8)
-  dilate = cv2.dilate(diff, kernel, iterations=2)
-  st.markdown("<h3 style='text-align: center; color: #10316B;'>Dilation</h3>", unsafe_allow_html=True)
-  st.image(dilate)
-
   # Find contours of the differences
-  contours, _ = cv2.findContours(dilate, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+  contours, _ = cv2.findContours(diff, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
   # Filter out smaller bounding boxes
   min_area = 100  # Minimum bounding box area
