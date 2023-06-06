@@ -9,7 +9,11 @@ def Sobel_compare(image1, image2):
 
   gray1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
   gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
-  st.markdown("<h3 style='text-align: center; color: #10316B;'>Gray Scale</h3>", unsafe_allow_html=True)
+
+  image1 = cv2.resize(image1, dsize=None, fx=0.3, fy=0.3)
+  image2 = cv2.resize(image2, dsize=None, fx=0.3, fy=0.3)
+
+  st.markdown("<h3 style='text-align: center; color: #10316B;'>Resize and Gray Scale</h3>", unsafe_allow_html=True)
   col1, col2 = st.columns( [0.5, 0.5])
   with col1:
     st.markdown('<p style="text-align: center;">Gray 1</p>',unsafe_allow_html=True)
