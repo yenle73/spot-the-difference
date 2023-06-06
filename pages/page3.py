@@ -57,9 +57,9 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
         st.markdown('<p style="text-align: center;">Image 2</p>',unsafe_allow_html=True)
         st.image(image2)
 
-img_array1 = np.array(image1)
-img_array2 = np.array(image2)
+    img_array1 = np.array(image1)
+    img_array2 = np.array(image2)
 
-st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
-diff = draw_diff(img_array1, img_array1)
-st.image(diff)
+    st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
+    diff = draw_diff(img_array1, img_array1)
+    st.image(diff)
