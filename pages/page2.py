@@ -46,8 +46,6 @@ def Sobel_compare(image1, image2):
 
   # Compute the absolute difference between the binary edges
   diff = cv2.absdiff(edges1, edges2)
-  threshold = 50
-  diff = cv2.threshold(diff, threshold, 255, cv2.THRESH_BINARY)[1]
   st.markdown("<h3 style='text-align: center; color: #10316B;'>Absolute differences between the edges</h3>", unsafe_allow_html=True)
   st.image(diff)
 
