@@ -5,10 +5,11 @@ from  PIL import Image, ImageEnhance
 import streamlit as st
 
 def feature_based_matching(img1, img2):
-  # downscale images
-  img1 = cv2.resize(img1, dsize=None, fx=0.3, fy=0.3)
-  img2 = cv2.resize(img2, dsize=None, fx=0.3, fy=0.3)
-
+  h, w = img1.shape
+  if h > 1000 or w > 1000:
+    img1 = cv2.resize(img1, dszie=None, fx=0.3, fy=0.3)
+    img2 = cv2.resize(img2, dszie=None, fx=0.3, fy=0.3)
+    
   # Convert to grayscale
   gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
