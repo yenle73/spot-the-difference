@@ -5,6 +5,6 @@ st.markdown("<h1 style='text-align: center; color: #10316B;'>Movie Recommendatio
 
 show_pages([
     Page("pages/page1.py", "Pixel-wise Comparison", ":notebook:"),
-    Page("pages/page2.py", "Edge Detection Comparison", ":blue_book:"),
+    Page("pages/page2.py", "Feature Based Comparison", ":blue_book:"),
     Page("pages/page3.py", "Structural Similarity Index Comparison", ":bar_chart:"),
 ])
