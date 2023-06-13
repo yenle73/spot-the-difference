@@ -170,8 +170,6 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
     img2 = image2.convert('RGB')
     images1 = np.array(img1)
     images2 = np.array(img2)
-    images1 = images1[:, :, ::-1].copy() 
-    images2 = images2[:, :, ::-1].copy()
 
 
 
@@ -182,8 +180,6 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
     final1 = draw_img_rect(images1, diff, 'g', 200)
     final2 = draw_img_rect(images2, diff, 'g', 200)
-    final1 = final1[:, :, ::-1].copy()
-    final2 = final2[:, :, ::-1].copy()
 
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Originals</h3>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
@@ -198,10 +194,10 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
     st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
     with col1:
-        st.images(final1)
+        st.images(img_array1)
 
     with col2:
-        st.images(final2)
+        st.images(img_array2)
 
     img_array1 = np.array(final1)
     img_array2 = np.array(final2)
