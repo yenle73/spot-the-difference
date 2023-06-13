@@ -182,6 +182,8 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
     final1 = draw_img_rect(images1, diff, 'g', 200)
     final2 = draw_img_rect(images2, diff, 'g', 200)
+    final1 = final1[:, :, ::-1].copy()
+    final2 = final2[:, :, ::-1].copy()
 
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Originals</h3>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
