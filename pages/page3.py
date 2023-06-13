@@ -166,13 +166,22 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
     image1 = Image.open(uploaded_file_1)
     image2 = Image.open(uploaded_file_2)
 
-    diff = draw_diff(image1, image2)
+    img1 = image1.convert('RGB')
+    img2 = image2.convert('RGB')
+    images1 = np.array(img1)
+    images2 = np.array(img2)
+    images1 = images1[:, :, ::-1].copy() 
+    images2 = images2[:, :, ::-1].copy()
 
 
-    calculate_ssim(image1, image2)
 
-    final1 = draw_img_rect(image1, diff, 'g', 200)
-    final2 = draw_img_rect(image2, diff, 'g', 200)
+    diff = draw_diff(images1, images2)
+
+
+    calculate_ssim(images1, images2)
+
+    final1 = draw_img_rect(images1, diff, 'g', 200)
+    final2 = draw_img_rect(images2, diff, 'g', 200)
 
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Originals</h3>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
@@ -187,10 +196,10 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
     st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
     with col1:
-        st.image(final1)
+        st.images(final1)
 
     with col2:
-        st.image(final2)
+        st.images(final2)
 
     img_array1 = np.array(final1)
     img_array2 = np.array(final2)
