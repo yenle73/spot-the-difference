@@ -5,7 +5,6 @@ from  PIL import Image, ImageEnhance
 import streamlit as st
 
 def feature_based_matching(img1, img2):
-
   # Convert to grayscale
   gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
