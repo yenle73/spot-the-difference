@@ -198,10 +198,10 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
     st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
     with col1:
-        st.images(img_array1)
+        st.images(final1)
 
     with col2:
-        st.images(img_array2)
+        st.images(final2)
 
     img_array1 = np.array(final1)
     img_array2 = np.array(final2)
