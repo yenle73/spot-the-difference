@@ -45,7 +45,7 @@ def get_rect(diff, thr = 0):
     img_area = diff.shape[0] * diff.shape[1]
     for c in contours:
         x,y,w,h = cv.boundingRect(c)
-        if w * h > img_area * 0.005:
+        if w * h > img_area * 0.001:
             rect.append([int(x), int(y), int(x + w), int(y+ h)])
     rect = remove_overlap_rectangles(rect)
     return rect
