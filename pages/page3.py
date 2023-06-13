@@ -87,7 +87,7 @@ def draw_rect(diff, color = 'r', thr = 0):
 
 # Draw rectangles on img
 def draw_img_rect(img, diff, color = 'r', thr = 0):
-    line = int(img.shape[0]/200)
+    line = int(img.shape[0]/0)
     rect = get_rect(diff, thr)
     for r in rect:
         if color == 'b':
@@ -193,6 +193,7 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
     img_array2 = np.array(final2)
 
     st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
+    col1, col2 = st.columns( [0.5, 0.5])
     with col1:
         st.image(img_array1)
 
