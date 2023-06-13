@@ -42,10 +42,10 @@ def get_rect(diff, thr = 0):
     contours = contours[0] if len(contours) == 2 else contours[1]
 
     rect = []
-
+    img_area = diff.shape[0] * diff.shape[1]
     for c in contours:
         area = cv.contourArea(c)
-        if area > diff.shape[0] * diff.shape[1] * 0.05:
+        if area > img_area * 0.0:
             x,y,w,h = cv.boundingRect(c)
             rect.append([int(x), int(y), int(x + w), int(y+ h)])
     rect = remove_overlap_rectangles(rect)
