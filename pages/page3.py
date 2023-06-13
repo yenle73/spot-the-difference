@@ -87,7 +87,7 @@ def draw_rect(diff, color = 'r', thr = 0):
 
 # Draw rectangles on img
 def draw_img_rect(img, diff, color = 'r', thr = 0):
-    line = int(img.shape[0]/0)
+    line = int(img.shape[0]/150)
     rect = get_rect(diff, thr)
     for r in rect:
         if color == 'b':
