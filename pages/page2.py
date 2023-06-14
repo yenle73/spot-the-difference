@@ -66,6 +66,7 @@ def feature_based_matching(img1, img2):
     thresh = cv2.threshold(gray, 30, 255, cv2.THRESH_BINARY)[1]
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+    hh, ww, _ = img1.shape
     # Tính toán tọa độ của bounding box cho từng contour và vẽ chúng lên ảnh thứ hai
     for contour in contours:
         (x, y, w, h) = cv2.boundingRect(contour)
