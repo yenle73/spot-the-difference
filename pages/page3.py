@@ -18,8 +18,8 @@ def calculate_ssim(image1, image2):
   return ssim(image1_gray, image2_gray, full=True)[0]
 
 # Threshold
-def threshold(diff, value = 0, choice = ''):
-    if choice == 'otsu':
+def threshold(diff, value = 0):
+    if value == -1:
         thresh = cv.threshold(diff, int(value), 255, cv.THRESH_BINARY_INV | cv.THRESH_OTSU)[1]
     else:
         thresh = cv.threshold(diff, int(value), 255, cv.THRESH_BINARY_INV)[1]
@@ -44,9 +44,8 @@ def get_rect(diff, thr = 0):
     rect = []
     img_area = diff.shape[0] * diff.shape[1]
     for c in contours:
-        area = cv.contourArea(c)
-        if area > img_area * 0.0:
-            x,y,w,h = cv.boundingRect(c)
+        x,y,w,h = cv.boundingRect(c)
+        if w * h > img_area / 1000:
             rect.append([int(x), int(y), int(x + w), int(y+ h)])
     rect = remove_overlap_rectangles(rect)
     return rect
@@ -177,9 +176,7 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
 
     calculate_ssim(images1, images2)
-
-    final1 = draw_img_rect(images1, diff, 'g', 200)
-    final2 = draw_img_rect(images2, diff, 'g', 200)
+    
 
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Originals</h3>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
@@ -189,9 +186,22 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
     with col2:
         st.image(image2)
 
+    
+    st.markdown("<h2 style='text-align: center; color: #10316B;'>SSIM</h2>", unsafe_allow_html=True)
+    
+    st.image(diff)
+    
+    st.markdown("<h2 style='text-align: center; color: #10316B;'></h2>", unsafe_allow_html=True)
+
+    thr = st.slider('Threshold:', -1, 255, 150)
+    
+    st.image(threshold(diff,thr))
+
+    final1 = draw_img_rect(images1, diff, 'g', thr)
+    final2 = draw_img_rect(images2, diff, 'g', thr)
     img_array1 = np.array(final1)
     img_array2 = np.array(final2)
-
+    
     st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
     with col1:
