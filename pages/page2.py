@@ -20,8 +20,8 @@ def feature_based_matching(img1, img2):
 
   # Tạo đối tượng SIFT và tính toán keypoint và descriptor cho 2 ảnh
   sift = cv2.SIFT_create()
-  kp1, des1 = sift.detectAndCompute(gray1, None)
-  kp2, des2 = sift.detectAndCompute(gray2, None)
+  kp1, des1 = sift.detectAndCompute(img1, None)
+  kp2, des2 = sift.detectAndCompute(img2, None)
 
   # Tìm các match giữa 2 ảnh bằng RANSAC
   FLANN_INDEX_KDTREE = 1
