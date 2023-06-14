@@ -68,7 +68,7 @@ def feature_based_matching(img1, img2):
     for contour in contours:
         (x, y, w, h) = cv2.boundingRect(contour)
         cv2.rectangle(img1, (x, y), (x+w, y+h), (0, 255, 0), 2)
-        cv2.rectangle(img2, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        cv2.rectangle(dst, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
     # Hiển thị kết quả
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Final results</h3>", unsafe_allow_html=True)
@@ -77,7 +77,7 @@ def feature_based_matching(img1, img2):
         st.image(img1)
 
     with col2:
-        st.image(img2)
+        st.image(dst)
   else:
     st.warning("Không đủ điểm match để tính toán ma trận homography!")
 
