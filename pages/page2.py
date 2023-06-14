@@ -54,9 +54,8 @@ def feature_based_matching(img1, img2):
     pts = np.float32([[0, 0], [0, h-1], [w-1, h-1], [w-1, 0]]).reshape(-1, 1, 2)
     dst = cv2.perspectiveTransform(pts, M)
 
-    img1_transformed = cv2.warpPerspective(img1, M, (img2.shape[1], img2.shape[0]))
     # Tính toán difference giữa ảnh thứ nhất và ảnh thứ hai đã được chuyển đổi bằng ma trận homography
-    diff = cv2.absdiff(img1_transformed, img2)
+    diff = cv2.absdiff(cv2.warpPerspective(img1, M, (img2.shape[1], img2.shape[0])), img2)
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Differences between images</h3>", unsafe_allow_html=True)
     st.image(diff)
 
@@ -68,7 +67,7 @@ def feature_based_matching(img1, img2):
     # Tính toán tọa độ của bounding box cho từng contour và vẽ chúng lên ảnh thứ hai
     for contour in contours:
         (x, y, w, h) = cv2.boundingRect(contour)
-        cv2.rectangle(img1_transformed, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        cv2.rectangle(img1, (x, y), (x+w, y+h), (0, 255, 0), 2)
         cv2.rectangle(img2, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
     # Hiển thị kết quả
@@ -78,7 +77,7 @@ def feature_based_matching(img1, img2):
         st.image(img1)
 
     with col2:
-        st.image(img1_transformed)
+        st.image(img2)
   else:
     st.warning("Không đủ điểm match để tính toán ma trận homography!")
 
