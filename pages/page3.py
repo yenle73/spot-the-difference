@@ -18,8 +18,8 @@ def calculate_ssim(image1, image2):
   return ssim(image1_gray, image2_gray, full=True)[0]
 
 # Threshold
-def threshold(diff, value = 0, choice = ''):
-    if choice == 'otsu':
+def threshold(diff, value = 0):
+    if value == -1:
         thresh = cv.threshold(diff, int(value), 255, cv.THRESH_BINARY_INV | cv.THRESH_OTSU)[1]
     else:
         thresh = cv.threshold(diff, int(value), 255, cv.THRESH_BINARY_INV)[1]
@@ -176,7 +176,7 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
 
     calculate_ssim(images1, images2)
-    thr = 150
+    thr = -1
     final1 = draw_img_rect(images1, diff, 'g', thr)
     final2 = draw_img_rect(images2, diff, 'g', thr)
 
