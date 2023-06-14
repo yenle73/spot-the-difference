@@ -6,7 +6,7 @@ import streamlit as st
 
 def feature_based_matching(img1, img2):
   # Convert to grayscale
-  gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+  '''gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 
   hh, ww = gray1.shape
@@ -16,7 +16,7 @@ def feature_based_matching(img1, img2):
   with col1:
     st.image(gray1)
   with col2:
-    st.image(gray2)
+    st.image(gray2)'''
 
   # Tạo đối tượng SIFT và tính toán keypoint và descriptor cho 2 ảnh
   sift = cv2.SIFT_create()
