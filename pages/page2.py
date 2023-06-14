@@ -9,6 +9,8 @@ def feature_based_matching(img1, img2):
   gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 
+  hh, ww = gray1.shape
+
   st.markdown("<h3 style='text-align: center; color: #10316B;'>Gray Scale</h3>", unsafe_allow_html=True)
   col1, col2 = st.columns( [0.5, 0.5])
   with col1:
@@ -67,8 +69,9 @@ def feature_based_matching(img1, img2):
     # Tính toán tọa độ của bounding box cho từng contour và vẽ chúng lên ảnh thứ hai
     for contour in contours:
         (x, y, w, h) = cv2.boundingRect(contour)
-        cv2.rectangle(img1, (x, y), (x+w, y+h), (0, 255, 0), 2)
-        cv2.rectangle(img2, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        if w * h > hh * ww * 0.0001:
+           cv2.rectangle(img1, (x, y), (x+w, y+h), (0, 255, 0), 2)
+           cv2.rectangle(img2, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
     # Hiển thị kết quả
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Final results</h3>", unsafe_allow_html=True)
