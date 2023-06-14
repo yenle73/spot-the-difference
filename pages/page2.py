@@ -54,8 +54,9 @@ def feature_based_matching(img1, img2):
     pts = np.float32([[0, 0], [0, h-1], [w-1, h-1], [w-1, 0]]).reshape(-1, 1, 2)
     dst = cv2.perspectiveTransform(pts, M)
 
+    img1_transformed = cv2.warpPerspective(img1, M, (img2.shape[1], img2.shape[0]))
     # Tính toán difference giữa ảnh thứ nhất và ảnh thứ hai đã được chuyển đổi bằng ma trận homography
-    diff = cv2.absdiff(cv2.warpPerspective(img1, M, (img2.shape[1], img2.shape[0])), img2)
+    diff = cv2.absdiff(img1_transformed, img2)
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Differences between images</h3>", unsafe_allow_html=True)
     st.image(diff)
 
@@ -77,7 +78,7 @@ def feature_based_matching(img1, img2):
         st.image(img1)
 
     with col2:
-        st.image(dst)
+        st.image(img1_transformed)
   else:
     st.warning("Không đủ điểm match để tính toán ma trận homography!")
 
