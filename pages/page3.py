@@ -186,7 +186,12 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
     with col2:
         st.image(image2)
 
+    
     st.markdown("<h2 style='text-align: center; color: #10316B;'>SSIM</h2>", unsafe_allow_html=True)
+    
+    st.image(diff)
+    
+    st.markdown("<h2 style='text-align: center; color: #10316B;'></h2>", unsafe_allow_html=True)
 
     thr = st.slider('Threshold:', -1, 255, 150)
     
