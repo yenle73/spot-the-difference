@@ -8,7 +8,7 @@ def feature_based_matching(img1, img2):
 
   h, w, _ = img1.shape
   # Convert to grayscale
-  '''gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+  gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 
   hh, ww = gray1.shape
@@ -18,7 +18,7 @@ def feature_based_matching(img1, img2):
   with col1:
     st.image(gray1)
   with col2:
-    st.image(gray2)'''
+    st.image(gray2)
   
   # downscale images
   if h > 1000 or w > 1000:
@@ -27,8 +27,8 @@ def feature_based_matching(img1, img2):
 
   # Tạo đối tượng SIFT và tính toán keypoint và descriptor cho 2 ảnh
   sift = cv2.SIFT_create()
-  kp1, des1 = sift.detectAndCompute(img1, None)
-  kp2, des2 = sift.detectAndCompute(img2, None)
+  kp1, des1 = sift.detectAndCompute(gray1, None)
+  kp2, des2 = sift.detectAndCompute(gray2, None)
 
   # Tìm các match giữa 2 ảnh bằng RANSAC
   FLANN_INDEX_KDTREE = 1
