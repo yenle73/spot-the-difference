@@ -17,6 +17,10 @@ def feature_based_matching(img1, img2):
     st.image(gray1)
   with col2:
     st.image(gray2)'''
+  
+  # downscale images
+  img1 = cv2.resize(img1, dsize=None, fx=0.3, fy=0.3)
+  img2 = cv2.resize(img2, dsize=None, fx=0.3, fy=0.3)
 
   # Tạo đối tượng SIFT và tính toán keypoint và descriptor cho 2 ảnh
   sift = cv2.SIFT_create()
