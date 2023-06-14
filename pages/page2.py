@@ -5,6 +5,8 @@ from  PIL import Image, ImageEnhance
 import streamlit as st
 
 def feature_based_matching(img1, img2):
+
+  h, w, _ = img1.shape
   # Convert to grayscale
   '''gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
   gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
@@ -19,8 +21,9 @@ def feature_based_matching(img1, img2):
     st.image(gray2)'''
   
   # downscale images
-  img1 = cv2.resize(img1, dsize=None, fx=0.3, fy=0.3)
-  img2 = cv2.resize(img2, dsize=None, fx=0.3, fy=0.3)
+  if h > 1000 or w > 1000:
+    img1 = cv2.resize(img1, dsize=None, fx=0.3, fy=0.3)
+    img2 = cv2.resize(img2, dsize=None, fx=0.3, fy=0.3)
 
   # Tạo đối tượng SIFT và tính toán keypoint và descriptor cho 2 ảnh
   sift = cv2.SIFT_create()
@@ -56,7 +59,6 @@ def feature_based_matching(img1, img2):
     st.table(M)
 
     # Tính toán tọa độ của các điểm trên ảnh thứ nhất bằng cách sử dụng ma trận homography
-    h, w, d = img1.shape
     pts = np.float32([[0, 0], [0, h-1], [w-1, h-1], [w-1, 0]]).reshape(-1, 1, 2)
     dst = cv2.perspectiveTransform(pts, M)
 
