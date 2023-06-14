@@ -7,4 +7,5 @@ show_pages([
     Page("pages/page1.py", "Pixel-wise Comparison", ":notebook:"),
     Page("pages/page2.py", "Feature Based Comparison", ":blue_book:"),
     Page("pages/page3.py", "Structural Similarity Index Comparison", ":bar_chart:"),
+    Page("pages/page4.py", "Edge Detection Comparasion", ":bar_chart:"),
 ])
