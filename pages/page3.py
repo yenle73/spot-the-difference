@@ -188,7 +188,7 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
     st.markdown("<h2 style='text-align: center; color: #10316B;'>SSIM</h2>", unsafe_allow_html=True)
 
-    thr = st.slider('Threshold:', -1, 255, 150, 5)
+    thr = st.slider('Threshold:', -1, 255, 150)
     
     st.image(threshold(diff,thr))
 
