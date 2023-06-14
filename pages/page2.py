@@ -47,7 +47,7 @@ def feature_based_matching(img1, img2):
   st.markdown("<h3 style='text-align: center; color: #10316B;'>Matches using Flann Based Matcher</h3>", unsafe_allow_html=True)
   st.image(img_matches)
 
-  MIN_MATCH_COUNT = 10
+  MIN_MATCH_COUNT = 5
   if len(good_matches) >= MIN_MATCH_COUNT:
     src_pts = np.float32([ kp1[m.queryIdx].pt for m in good_matches ]).reshape(-1,1,2)
     dst_pts = np.float32([ kp2[m.trainIdx].pt for m in good_matches ]).reshape(-1,1,2)
