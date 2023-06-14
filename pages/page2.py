@@ -74,7 +74,7 @@ def feature_based_matching(img1, img2):
     # Tính toán tọa độ của bounding box cho từng contour và vẽ chúng lên ảnh thứ hai
     for contour in contours:
         (x, y, w, h) = cv2.boundingRect(contour)
-        if w * h > hh * ww * 0.001:
+        if w * h > hh * ww * 0.01:
            cv2.rectangle(img1, (x, y), (x+w, y+h), (0, 255, 0), 2)
            cv2.rectangle(img2, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
