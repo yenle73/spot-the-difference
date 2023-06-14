@@ -176,9 +176,7 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
 
     calculate_ssim(images1, images2)
-    thr = -1
-    final1 = draw_img_rect(images1, diff, 'g', thr)
-    final2 = draw_img_rect(images2, diff, 'g', thr)
+    
 
     st.markdown("<h3 style='text-align: center; color: #10316B;'>Originals</h3>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
@@ -188,12 +186,17 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
     with col2:
         st.image(image2)
 
+    st.markdown("<h2 style='text-align: center; color: #10316B;'>SSIM</h2>", unsafe_allow_html=True)
+
+    thr = st.slider('Threshold:', -1, 255, 150, 5)
+    
+    st.image(threshold(diff,thr))
+
+    final1 = draw_img_rect(images1, diff, 'g', thr)
+    final2 = draw_img_rect(images2, diff, 'g', thr)
     img_array1 = np.array(final1)
     img_array2 = np.array(final2)
     
-    st.markdown("<h2 style='text-align: center; color: #10316B;'>SSIM</h2>", unsafe_allow_html=True)
-    st.image(threshold(diff,thr))
-
     st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
     with col1:
