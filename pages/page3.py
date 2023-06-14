@@ -45,7 +45,7 @@ def get_rect(diff, thr = 0):
     img_area = diff.shape[0] * diff.shape[1]
     for c in contours:
         x,y,w,h = cv.boundingRect(c)
-        if w * h > img_area / 200:
+        if w * h > img_area / 1000:
             rect.append([int(x), int(y), int(x + w), int(y+ h)])
     rect = remove_overlap_rectangles(rect)
     return rect
@@ -190,6 +190,9 @@ if uploaded_file_1 is not None and uploaded_file_2 is not None:
 
     img_array1 = np.array(final1)
     img_array2 = np.array(final2)
+    
+    st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
+    st.image(diff)
 
     st.markdown("<h2 style='text-align: center; color: #10316B;'>Final results</h2>", unsafe_allow_html=True)
     col1, col2 = st.columns( [0.5, 0.5])
